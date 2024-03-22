@@ -1,23 +1,25 @@
-import { Injectable } from "@nestjs/common";
-import { SignUpDto } from "./dto/signUpDto";
-import { SignInDto } from "./dto/signInDto";
-import { InjectModel } from "@nestjs/mongoose";
-import { User } from "./schema/user.schema";
-import { Model } from "mongoose";
+import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { UsersService } from "../users/users.service";
+import { JwtService } from "@nestjs/jwt";
 
 @Injectable()
 export class AuthService {
-  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+  constructor(
+    private usersService: UsersService,
+    private jwtService: JwtService
+  ) {}
 
-  async signUp(req: SignUpDto): Promise<User> {
-    console.log(req);
-    const newUser = await new this.userModel(req);
-    return newUser.save();
-  }
-
-  async signIn(req: SignInDto): Promise<User | null> {
-    console.log("singing in =>", req);
-
-    return await this.userModel.findOne({ username: "Bilal Arif" }).exec();
+  async signIn(
+    username: string,
+    pass: string
+  ): Promise<{ access_token: string }> {
+    const user = await this.usersService.findOne(username);
+    if (user?.password !== pass) {
+      throw new UnauthorizedException();
+    }
+    const payload = { sub: user.userId, username: user.username };
+    return {
+      access_token: await this.jwtService.signAsync(payload),
+    };
   }
 }
