@@ -3,6 +3,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Category } from "./schema/category.schema";
 import { Model, ObjectId } from "mongoose";
 import { CreateCategoryDto } from "./dto/createCategory.dto";
+import { UpdateCategoryDto } from "./dto/updateCategory.dto";
 
 @Injectable()
 export class CategoryService {
@@ -17,6 +18,14 @@ export class CategoryService {
 
   async getAllCategories() {
     return await this.categoryModel.find({ isDeleted: false });
+  }
+
+  async updateCategoryById(updatedCategory: UpdateCategoryDto) {
+    return await this.categoryModel.findByIdAndUpdate(
+      { _id: updatedCategory?.id },
+      updatedCategory,
+      { new: true }
+    );
   }
 
   async deleteCategoryById(id: ObjectId) {

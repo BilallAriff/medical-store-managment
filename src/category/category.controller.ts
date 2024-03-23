@@ -3,6 +3,7 @@ import { CategoryService } from "./category.service";
 import { CreateCategoryDto } from "./dto/createCategory.dto";
 import { Category } from "./schema/category.schema";
 import { ObjectId } from "mongoose";
+import { UpdateCategoryDto } from "./dto/updateCategory.dto";
 
 @Controller("categories")
 export class CategoryController {
@@ -17,6 +18,14 @@ export class CategoryController {
   @Get("get-all-categories")
   async getAllCategories(): Promise<Category[]> {
     return await this.categoryService.getAllCategories();
+  }
+
+  @Post("update-category-by-id")
+  async updateCategoryById(
+    @Body() updatedCategory: UpdateCategoryDto
+  ): Promise<Category> {
+    console.log("id to delete", updatedCategory?.id);
+    return await this.categoryService.updateCategoryById(updatedCategory);
   }
 
   @Post("delete-category-by-id")

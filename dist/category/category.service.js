@@ -28,6 +28,9 @@ let CategoryService = class CategoryService {
     async getAllCategories() {
         return await this.categoryModel.find({ isDeleted: false });
     }
+    async updateCategoryById(updatedCategory) {
+        return await this.categoryModel.findByIdAndUpdate({ _id: updatedCategory === null || updatedCategory === void 0 ? void 0 : updatedCategory.id }, updatedCategory, { new: true });
+    }
     async deleteCategoryById(id) {
         return await this.categoryModel.findByIdAndUpdate({ _id: id }, { isDeleted: true }, { new: true });
     }

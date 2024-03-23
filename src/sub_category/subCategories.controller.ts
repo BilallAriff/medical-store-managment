@@ -3,6 +3,7 @@ import { ObjectId } from "mongoose";
 import { SubCategoryService } from "./subcategories.service";
 import { SubCategory } from "./schema/subCategory.schema";
 import { CreateSubCategoryDto } from "./dto/createSubCategory.dto";
+import { UpdateSubCategoryDto } from "./dto/updateSubCategory.dto";
 
 @Controller("sub-categories")
 export class SubCategoryController {
@@ -12,13 +13,21 @@ export class SubCategoryController {
   async createCategory(
     @Body() subCategory: CreateSubCategoryDto
   ): Promise<SubCategory> {
-    console.log(subCategory);
     return await this.subCategoryService.createCategory({ ...subCategory });
   }
 
   @Get("get-all-sub-categories")
   async getAllCategories(): Promise<SubCategory[]> {
     return await this.subCategoryService.getAllCategories();
+  }
+
+  @Post("update-sub-category-by-id")
+  async updateCategoryById(
+    @Body() updatedSubCategory: UpdateSubCategoryDto
+  ): Promise<SubCategory> {
+    return await this.subCategoryService.updateSubCategoryById(
+      updatedSubCategory
+    );
   }
 
   @Post("delete-sub-category-by-id")

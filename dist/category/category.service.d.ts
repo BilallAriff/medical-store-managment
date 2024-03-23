@@ -25,6 +25,7 @@
 import { Category } from "./schema/category.schema";
 import { Model, ObjectId } from "mongoose";
 import { CreateCategoryDto } from "./dto/createCategory.dto";
+import { UpdateCategoryDto } from "./dto/updateCategory.dto";
 export declare class CategoryService {
     private categoryModel;
     constructor(categoryModel: Model<Category>);
@@ -34,6 +35,9 @@ export declare class CategoryService {
     getAllCategories(): Promise<(import("mongoose").Document<unknown, {}, Category> & Category & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
+    updateCategoryById(updatedCategory: UpdateCategoryDto): Promise<import("mongoose").Document<unknown, {}, Category> & Category & {
+        _id: import("mongoose").Types.ObjectId;
+    }>;
     deleteCategoryById(id: ObjectId): Promise<import("mongoose").Document<unknown, {}, Category> & Category & {
         _id: import("mongoose").Types.ObjectId;
     }>;

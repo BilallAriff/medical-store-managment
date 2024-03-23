@@ -25,6 +25,7 @@
 import { Model, ObjectId } from "mongoose";
 import { SubCategory } from "./schema/subCategory.schema";
 import { CreateSubCategoryDto } from "./dto/createSubCategory.dto";
+import { UpdateSubCategoryDto } from "./dto/updateSubCategory.dto";
 export declare class SubCategoryService {
     private subCategoryModel;
     constructor(subCategoryModel: Model<SubCategory>);
@@ -32,6 +33,9 @@ export declare class SubCategoryService {
         _id: import("mongoose").Types.ObjectId;
     }>;
     getAllCategories(): Promise<SubCategory[]>;
+    updateSubCategoryById(updatedSubCategory: UpdateSubCategoryDto): Promise<import("mongoose").Document<unknown, {}, SubCategory> & SubCategory & {
+        _id: import("mongoose").Types.ObjectId;
+    }>;
     deleteCategoryById(id: ObjectId): Promise<import("mongoose").Document<unknown, {}, SubCategory> & SubCategory & {
         _id: import("mongoose").Types.ObjectId;
     }>;

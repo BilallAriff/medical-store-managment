@@ -30,6 +30,9 @@ let SubCategoryService = class SubCategoryService {
         });
         return allSubCategories;
     }
+    async updateSubCategoryById(updatedSubCategory) {
+        return await this.subCategoryModel.findByIdAndUpdate({ _id: updatedSubCategory === null || updatedSubCategory === void 0 ? void 0 : updatedSubCategory.id }, updatedSubCategory, { new: true });
+    }
     async deleteCategoryById(id) {
         return await this.subCategoryModel.findByIdAndUpdate({ _id: id }, { isDeleted: true }, { new: true });
     }

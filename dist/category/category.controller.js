@@ -16,6 +16,7 @@ exports.CategoryController = void 0;
 const common_1 = require("@nestjs/common");
 const category_service_1 = require("./category.service");
 const createCategory_dto_1 = require("./dto/createCategory.dto");
+const updateCategory_dto_1 = require("./dto/updateCategory.dto");
 let CategoryController = class CategoryController {
     constructor(categoryService) {
         this.categoryService = categoryService;
@@ -26,6 +27,10 @@ let CategoryController = class CategoryController {
     }
     async getAllCategories() {
         return await this.categoryService.getAllCategories();
+    }
+    async updateCategoryById(updatedCategory) {
+        console.log("id to delete", updatedCategory === null || updatedCategory === void 0 ? void 0 : updatedCategory.id);
+        return await this.categoryService.updateCategoryById(updatedCategory);
     }
     async deleteCategoryById({ id }) {
         console.log("id to delete", id);
@@ -45,6 +50,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], CategoryController.prototype, "getAllCategories", null);
+__decorate([
+    (0, common_1.Post)("update-category-by-id"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [updateCategory_dto_1.UpdateCategoryDto]),
+    __metadata("design:returntype", Promise)
+], CategoryController.prototype, "updateCategoryById", null);
 __decorate([
     (0, common_1.Post)("delete-category-by-id"),
     __param(0, (0, common_1.Body)()),

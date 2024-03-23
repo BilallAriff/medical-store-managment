@@ -16,16 +16,19 @@ exports.SubCategoryController = void 0;
 const common_1 = require("@nestjs/common");
 const subcategories_service_1 = require("./subcategories.service");
 const createSubCategory_dto_1 = require("./dto/createSubCategory.dto");
+const updateSubCategory_dto_1 = require("./dto/updateSubCategory.dto");
 let SubCategoryController = class SubCategoryController {
     constructor(subCategoryService) {
         this.subCategoryService = subCategoryService;
     }
     async createCategory(subCategory) {
-        console.log(subCategory);
         return await this.subCategoryService.createCategory(Object.assign({}, subCategory));
     }
     async getAllCategories() {
         return await this.subCategoryService.getAllCategories();
+    }
+    async updateCategoryById(updatedSubCategory) {
+        return await this.subCategoryService.updateSubCategoryById(updatedSubCategory);
     }
     async deleteCategoryById({ id }) {
         console.log("id to delete", id);
@@ -45,6 +48,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], SubCategoryController.prototype, "getAllCategories", null);
+__decorate([
+    (0, common_1.Post)("update-sub-category-by-id"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [updateSubCategory_dto_1.UpdateSubCategoryDto]),
+    __metadata("design:returntype", Promise)
+], SubCategoryController.prototype, "updateCategoryById", null);
 __decorate([
     (0, common_1.Post)("delete-sub-category-by-id"),
     __param(0, (0, common_1.Body)()),
