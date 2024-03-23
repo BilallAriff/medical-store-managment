@@ -22,6 +22,7 @@ const product_controller_1 = require("./product/product.controller");
 const product_module_1 = require("./product/product.module");
 const category_module_1 = require("./category/category.module");
 const subCategories_module_1 = require("./sub_category/subCategories.module");
+const sideEffect_module_1 = require("./side_effects/sideEffect.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -34,6 +35,7 @@ AppModule = __decorate([
             product_module_1.ProductModule,
             category_module_1.CategoryModule,
             subCategories_module_1.SubCategoryModule,
+            sideEffect_module_1.SideEffectModule,
         ],
         controllers: [app_controller_1.AppController, auth_controller_1.AuthController, product_controller_1.ProductController],
         providers: [

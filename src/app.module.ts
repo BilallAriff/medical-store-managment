@@ -13,6 +13,7 @@ import { ProductController } from "./product/product.controller";
 import { ProductModule } from "./product/product.module";
 import { CategoryModule } from "./category/category.module";
 import { SubCategoryModule } from "./sub_category/subCategories.module";
+import { SideEffectModule } from "./side_effects/sideEffect.module";
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { SubCategoryModule } from "./sub_category/subCategories.module";
     ProductModule,
     CategoryModule,
     SubCategoryModule,
+    SideEffectModule,
   ],
   controllers: [AppController, AuthController, ProductController],
   providers: [
