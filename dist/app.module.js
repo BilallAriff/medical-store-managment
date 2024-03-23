@@ -18,17 +18,24 @@ const auth_controller_1 = require("./auth/auth.controller");
 const auth_module_1 = require("./auth/auth.module");
 const core_1 = require("@nestjs/core");
 const auth_guard_1 = require("./auth/auth.guard");
+const product_controller_1 = require("./product/product.controller");
+const product_module_1 = require("./product/product.module");
+const category_module_1 = require("./category/category.module");
+const subCategories_module_1 = require("./sub_category/subCategories.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot({ isGlobal: true }),
+            config_1.ConfigModule.forRoot({ isGlobal: true, envFilePath: ".env" }),
             database_module_1.DatabaseModule,
             users_module_1.UsersModule,
             auth_module_1.AuthModule,
+            product_module_1.ProductModule,
+            category_module_1.CategoryModule,
+            subCategories_module_1.SubCategoryModule,
         ],
-        controllers: [app_controller_1.AppController, auth_controller_1.AuthController],
+        controllers: [app_controller_1.AppController, auth_controller_1.AuthController, product_controller_1.ProductController],
         providers: [
             app_service_1.AppService,
             auth_service_1.AuthService,
