@@ -11,7 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductSchema = exports.Product = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-let Product = class Product extends Document {
+const mongoose_2 = require("mongoose");
+let Product = class Product extends mongoose_2.Document {
 };
 __decorate([
     (0, mongoose_1.Prop)({ default: "/statics/product_image.png" }),
@@ -26,21 +27,25 @@ __decorate([
     __metadata("design:type", String)
 ], Product.prototype, "description", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
+    (0, mongoose_1.Prop)({ required: true, ref: "Category", type: "ObjectId" }),
     __metadata("design:type", Array)
 ], Product.prototype, "category", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
+    (0, mongoose_1.Prop)({ required: true, ref: "SubCategory", type: "ObjectId" }),
     __metadata("design:type", Array)
 ], Product.prototype, "subCategories", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({}),
+    (0, mongoose_1.Prop)({ ref: "SideEffects", type: "ObjectId" }),
     __metadata("design:type", Array)
 ], Product.prototype, "sideEffects", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: false }),
     __metadata("design:type", Boolean)
 ], Product.prototype, "prescriptionRequired", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ default: false }),
+    __metadata("design:type", Boolean)
+], Product.prototype, "isDeleted", void 0);
 Product = __decorate([
     (0, mongoose_1.Schema)()
 ], Product);

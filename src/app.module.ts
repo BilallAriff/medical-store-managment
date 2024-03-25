@@ -1,3 +1,4 @@
+import { ProductModule } from "./product/product.module";
 import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
@@ -10,13 +11,13 @@ import { AuthModule } from "./auth/auth.module";
 import { APP_GUARD } from "@nestjs/core";
 import { AuthGuard } from "./auth/auth.guard";
 import { ProductController } from "./product/product.controller";
-import { ProductModule } from "./product/product.module";
 import { CategoryModule } from "./category/category.module";
 import { SubCategoryModule } from "./sub_category/subCategories.module";
 import { SideEffectModule } from "./side_effects/sideEffect.module";
 
 @Module({
   imports: [
+    ProductModule,
     ConfigModule.forRoot({ isGlobal: true, envFilePath: ".env" }),
     DatabaseModule,
     UsersModule,
@@ -25,6 +26,7 @@ import { SideEffectModule } from "./side_effects/sideEffect.module";
     CategoryModule,
     SubCategoryModule,
     SideEffectModule,
+    // ProductModule,
   ],
   controllers: [AppController, AuthController, ProductController],
   providers: [

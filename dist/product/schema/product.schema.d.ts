@@ -21,8 +21,8 @@
 /// <reference types="mongoose/types/utility" />
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
-/// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
+import { Document } from "mongoose";
 import { Category } from "src/category/schema/category.schema";
 import { SideEffects } from "src/side_effects/schema/sideEffects.schema";
 import { SubCategory } from "src/sub_category/schema/subCategory.schema";
@@ -34,9 +34,10 @@ export declare class Product extends Document {
     subCategories: SubCategory[];
     sideEffects?: SideEffects[];
     prescriptionRequired?: boolean;
+    isDeleted: boolean;
 }
-export declare const ProductSchema: import("mongoose").Schema<Product, import("mongoose").Model<Product, any, any, any, import("mongoose").Document<unknown, any, Product> & Product & {
+export declare const ProductSchema: import("mongoose").Schema<Product, import("mongoose").Model<Product, any, any, any, Document<unknown, any, Product> & Product & {
     _id: import("mongoose").Types.ObjectId;
-}, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, Product, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<Product>> & import("mongoose").FlatRecord<Product> & {
+}, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, Product, Document<unknown, {}, import("mongoose").FlatRecord<Product>> & import("mongoose").FlatRecord<Product> & {
     _id: import("mongoose").Types.ObjectId;
 }>;
