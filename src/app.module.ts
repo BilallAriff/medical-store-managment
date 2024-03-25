@@ -28,7 +28,7 @@ import { SideEffectModule } from "./side_effects/sideEffect.module";
     SideEffectModule,
     // ProductModule,
   ],
-  controllers: [AppController, AuthController, ProductController],
+  controllers: [AppController, AuthController],
   providers: [
     AppService,
     AuthService,

@@ -19,7 +19,6 @@ const auth_controller_1 = require("./auth/auth.controller");
 const auth_module_1 = require("./auth/auth.module");
 const core_1 = require("@nestjs/core");
 const auth_guard_1 = require("./auth/auth.guard");
-const product_controller_1 = require("./product/product.controller");
 const category_module_1 = require("./category/category.module");
 const subCategories_module_1 = require("./sub_category/subCategories.module");
 const sideEffect_module_1 = require("./side_effects/sideEffect.module");
@@ -38,7 +37,7 @@ AppModule = __decorate([
             subCategories_module_1.SubCategoryModule,
             sideEffect_module_1.SideEffectModule,
         ],
-        controllers: [app_controller_1.AppController, auth_controller_1.AuthController, product_controller_1.ProductController],
+        controllers: [app_controller_1.AppController, auth_controller_1.AuthController],
         providers: [
             app_service_1.AppService,
             auth_service_1.AuthService,
