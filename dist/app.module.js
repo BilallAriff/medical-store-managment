@@ -22,6 +22,7 @@ const auth_guard_1 = require("./auth/auth.guard");
 const category_module_1 = require("./category/category.module");
 const subCategories_module_1 = require("./sub_category/subCategories.module");
 const sideEffect_module_1 = require("./side_effects/sideEffect.module");
+const cors_middleware_1 = require("./middlewares/cors.middleware");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -45,6 +46,7 @@ AppModule = __decorate([
                 provide: core_1.APP_GUARD,
                 useClass: auth_guard_1.AuthGuard,
             },
+            cors_middleware_1.CorsMiddleware,
         ],
     })
 ], AppModule);

@@ -14,6 +14,7 @@ import { ProductController } from "./product/product.controller";
 import { CategoryModule } from "./category/category.module";
 import { SubCategoryModule } from "./sub_category/subCategories.module";
 import { SideEffectModule } from "./side_effects/sideEffect.module";
+import { CorsMiddleware } from "./middlewares/cors.middleware";
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { SideEffectModule } from "./side_effects/sideEffect.module";
       provide: APP_GUARD,
       useClass: AuthGuard,
     },
+    CorsMiddleware,
   ],
 })
 export class AppModule {}
